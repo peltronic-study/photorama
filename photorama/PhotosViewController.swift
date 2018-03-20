@@ -21,6 +21,14 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         
         // kick off web service exchagne when view controllers comes on screen for first time
-        store.fetchInterestingPhotos()
+        store.fetchInterestingPhotos { (PhotosResult) -> Void in
+            switch PhotosResult {
+            case let .success(photos):
+                print("Successfully found \(photos.count) photos")
+            case let .failure(error)
+                print("Error fetching interesting photos: \(error)")"
+            }
+            
+        }
     }
 }

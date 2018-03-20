@@ -8,6 +8,12 @@
 
 import Foundation
 
+// valid JSON data containing an array of phots will be associated with the success case
+enum PhotosResult {
+    case success([Photo])
+    case failure(Error)
+}
+
 class PhotoStore {
     
     // property to hold an instance of URLSession
@@ -17,23 +23,24 @@ class PhotoStore {
     }()
     
     // creates a URLRequest that connects to flickr api and asks for list of interesting photos
-    func fetchInterestingPhotos() {
+    // uses completion closure that will be called once web service request is completed
+    func fetchInterestingPhotos(completion: @escaping (PhotosResult) -> Void) {
         let url = FlickrAPI.interestingPhotosURL
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data,response,error) -> Void in
             // completion closure for the session, called when request finishes
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching photos : \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processPhotosRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    
+    // porcess JSOn data returend from web service request
+    private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        return FlickrAPI.photos(fromJSON: jsonData)
+    }
+
 }
