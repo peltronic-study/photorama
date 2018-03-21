@@ -6,6 +6,9 @@
 //  Copyright © 2018 Peter S Gorgone. All rights reserved.
 //
 
+// See
+//  ~ https://stackoverflow.com/questions/31735228/how-to-make-a-simple-collection-view-with-swift
+
 import UIKit
 
 class PhotosViewController: UIViewController {
@@ -22,7 +25,7 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         
         // set data source on the view
-        collectionView.dataSource = photoDataSource
+        collectionView.dataSource = photoDataSource // %DEBUG: collectionView is nil
         
         // kick off web service exchagne when view controllers comes on screen for first time
         store.fetchInterestingPhotos { (PhotosResult) -> Void in
