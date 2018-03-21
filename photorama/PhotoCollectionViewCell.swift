@@ -15,6 +15,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     // reset cell to spinning state when cell is first created
     override func awakeFromNib() {
+        print("awakeFromNib()")
         super.awakeFromNib()
         update(with: nil)
     }
@@ -27,6 +28,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     // Activity indicator should only spin when cell is not displaying an image (ie, while downloading)
     func update(with image: UIImage?) {
+        print("update()")
         if let imageToDisplay = image {
             spinner.stopAnimating()
             imageView.image = imageToDisplay

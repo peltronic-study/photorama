@@ -39,6 +39,7 @@ class PhotosViewController: UIViewController {
                 self.photoDataSource.photos.removeAll()
             }
             
+            self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
     
