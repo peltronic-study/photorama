@@ -87,8 +87,6 @@
 		26A1E5FD20602EE2000D1F6F = {
 			isa = PBXGroup;
 			children = (
-				2652BB322062C89D002528EE /* PhotoDataSource.swift */,
-				2652BB342062D2BD002528EE /* PhotoCollectionViewCell.swift */,
 				26A1E60820602EE2000D1F6F /* photorama */,
 				26A1E61D20602EE2000D1F6F /* photoramaTests */,
 				26A1E62820602EE2000D1F6F /* photoramaUITests */,
@@ -109,6 +107,8 @@
 		26A1E60820602EE2000D1F6F /* photorama */ = {
 			isa = PBXGroup;
 			children = (
+				2652BB342062D2BD002528EE /* PhotoCollectionViewCell.swift */,
+				2652BB322062C89D002528EE /* PhotoDataSource.swift */,
 				26A1E63720602F4E000D1F6F /* PhotosViewController.swift */,
 				265824D2206040CB00E43907 /* FlickrAPI.swift */,
 				265824D42060479000E43907 /* PhotoStore.swift */,
